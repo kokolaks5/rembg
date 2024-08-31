@@ -1,0 +1,25 @@
+# Pliki i foldery środowiska venv
+venv/
+
+# Pliki tymczasowe
+*.pyc
+*.tmp
+*.tmp.*
+
+# Pliki IDE
+.vscode/
+.idea/
+*.iml
+
+# Pliki systemowe
+.DS_Store
+Thumbs.db
+
+# Pliki niepotrzebne w repozytorium
+__pycache__/
+*.egg-info/
+dist/
+build/
+
+# Pliki danych
+image_without_bg.png
