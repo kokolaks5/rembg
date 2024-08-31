@@ -1,6 +1,6 @@
 import streamlit as st
 from rembg import remove
-# from PIL import Image
+from PIL import Image
 
 import requests
 
@@ -12,7 +12,7 @@ st.title("Remove background from image")
 st.markdown("Paste the image URL or upload a file from your computer")
 
 obraz_url = st.text_input("URL image: ")
-obraz_file = st.file_uploader("Upload image", type=["jpg", "png", "jpeg", "bmp", "tiff", "webp", "jfif"])
+obraz_file = st.file_uploader("Upload image", type=["jpg", "jpeg", "jfif", "png", "bmp", "tiff", "webp"])
 
 if obraz_file is not None:
     obraz = obraz_file.read()
@@ -22,10 +22,10 @@ else:
     st.error("Please paste a valid image URL or upload a file from your computer.")
     st.stop()
 
-st.write("Original image")
+st.write("### Original image")
 st.image(obraz)
 
-st.write("Parameters")
+st.write("### Parameters")
 model = st.selectbox("Model", ["u2net_human_seg", "u2net"])
 alpha_matting = st.slider("Background Removal Adjustment", 0.0, 1.0, 0.0, 0.01)
 alpha_matting_foreground_threshold = st.slider("Foreground threshold", 0.0, 1.0, 0.96, 0.01)
@@ -38,7 +38,7 @@ obraz_bez_tla = remove(obraz,
                        alpha_matting_background_threshold=alpha_matting_background_threshold)
 
 
-st.write("Image without background")
+st.write("### Image without background")
 st.image(obraz_bez_tla)
 
 st.download_button(
