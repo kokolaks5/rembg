@@ -1,6 +1,6 @@
 import streamlit as st
 from rembg import remove
-from PIL import Image
+# from PIL import Image
 
 import requests
 
@@ -26,10 +26,10 @@ st.write("Original image")
 st.image(obraz)
 
 st.write("Parameters")
-model = st.selectbox("Model", ["u2net", "u2net_human_seg"])
-alpha_matting = st.slider("Background Removal Adjustment", 0.0, 1.0, 0.5, 0.01)
-alpha_matting_foreground_threshold = st.slider("Foreground threshold", 0.0, 1.0, 0.7, 0.01)
-alpha_matting_background_threshold = st.slider("Background Threshold", 0.0, 1.0, 0.3, 0.01)
+model = st.selectbox("Model", ["u2net_human_seg", "u2net"])
+alpha_matting = st.slider("Background Removal Adjustment", 0.0, 1.0, 0.0, 0.01)
+alpha_matting_foreground_threshold = st.slider("Foreground threshold", 0.0, 1.0, 0.96, 0.01)
+alpha_matting_background_threshold = st.slider("Background Threshold", 0.0, 1.0, 0.02, 0.01)
 
 obraz_bez_tla = remove(obraz, 
                        model=model, 
